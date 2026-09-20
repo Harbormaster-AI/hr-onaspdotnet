@@ -1,0 +1,5 @@
+@hronaspdotnet.Api_HostAddress = http://localhost:5076
+
+GET {{hronaspdotnet.Api_HostAddress}}/
+Accept: application/json
+

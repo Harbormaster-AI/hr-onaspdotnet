@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="hronaspdotnet/hronaspdotnet.Api.csproj" />
+  <Project Path="hronaspdotnet/Tests/hronaspdotnet.Tests.csproj" />
+</Solution>
