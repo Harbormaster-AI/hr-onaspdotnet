@@ -58,7 +58,7 @@ public class WorkShiftService : IWorkShiftService
             existing.StartTime = model.StartTime;
             existing.EndTime = model.EndTime;
             existing.BreakMinutes = model.BreakMinutes;
-            existing.DayOfWeek = model.DayOfWeek;
+            existing.DayOfWeek_ = model.DayOfWeek_;
 
             await _repository.UpdateAsync(existing, cancellationToken);
         }

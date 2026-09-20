@@ -258,7 +258,7 @@ public class WorkShiftRequest {
  public virtual LocalTime? StartTime { get; set; } 
  public virtual LocalTime? EndTime { get; set; } 
  public virtual int? BreakMinutes { get; set; } 
- public virtual DayOfWeek? DayOfWeek { get; set; } 
+ public virtual DayOfWeek_? DayOfWeek_ { get; set; } 
 }
 
 public class WorkShiftResponse : WorkShiftRequest {
@@ -268,7 +268,7 @@ public class WorkShiftResponse : WorkShiftRequest {
             StartTime = model.StartTime,
             EndTime = model.EndTime,
             BreakMinutes = model.BreakMinutes,
-            DayOfWeek = model.DayOfWeek,
+            DayOfWeek_ = model.DayOfWeek_,
         };
     }
 }

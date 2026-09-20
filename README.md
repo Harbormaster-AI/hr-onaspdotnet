@@ -100,7 +100,7 @@ EmploymentType
 ContractStatus
 PayFrequency
 ScheduleType
-DayOfWeek
+DayOfWeek_
 SalaryComponentType
 EquityType
 BenefitType

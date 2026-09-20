@@ -11,7 +11,7 @@ public class WorkShift
  public virtual LocalTime? EndTime { get; set; } 
  public virtual int? BreakMinutes { get; set; } 
 public virtual WorkSchedule? WorkSchedule { get; set; } 
- public virtual DayOfWeek? DayOfWeek { get; set; } 
+ public virtual DayOfWeek_? DayOfWeek_ { get; set; } 
 
     public static WorkShift FromRequest(WorkShiftRequest request) {
         return new WorkShift {
@@ -19,7 +19,7 @@ public virtual WorkSchedule? WorkSchedule { get; set; }
             StartTime = request.StartTime,
             EndTime = request.EndTime,
             BreakMinutes = request.BreakMinutes,
-            DayOfWeek = request.DayOfWeek,
+            DayOfWeek_ = request.DayOfWeek_,
         };
     }
 }

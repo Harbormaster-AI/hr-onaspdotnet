@@ -111,7 +111,7 @@ public static class WorkShiftEndpoints
             StartTime = request.StartTime,
             EndTime = request.EndTime,
             BreakMinutes = request.BreakMinutes,
-            DayOfWeek = request.DayOfWeek,
+            DayOfWeek_ = request.DayOfWeek_,
         };
         return model;
     }
