@@ -1,4 +1,7 @@
+
+using hronaspdotnet.Contracts;
 using hronaspdotnet.Domain;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace hronaspdotnet.Persistence;
@@ -52,4 +55,5 @@ public class EmploymentContractRepository : IEmploymentContractRepository
         _db.EmploymentContracts.Remove(employmentContract);
         await _db.SaveChangesAsync(cancellationToken);
     }
+
 }

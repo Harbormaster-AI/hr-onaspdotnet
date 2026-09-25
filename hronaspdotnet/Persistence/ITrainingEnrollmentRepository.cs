@@ -1,4 +1,5 @@
 using hronaspdotnet.Domain;
+using hronaspdotnet.Contracts;
 
 namespace hronaspdotnet.Persistence;
 
@@ -9,4 +10,6 @@ public interface ITrainingEnrollmentRepository
     Task AddAsync(TrainingEnrollment trainingEnrollment, CancellationToken cancellationToken);
     Task UpdateAsync(TrainingEnrollment trainingEnrollment, CancellationToken cancellationToken);
     Task DeleteAsync(TrainingEnrollment trainingEnrollment, CancellationToken cancellationToken);
+
+
 }

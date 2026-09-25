@@ -1,3 +1,4 @@
+
 using hronaspdotnet.Contracts;
 
 namespace hronaspdotnet.Domain;

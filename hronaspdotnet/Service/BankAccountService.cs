@@ -1,6 +1,8 @@
+
 using hronaspdotnet.Domain;
 using hronaspdotnet.Persistence;
 using hronaspdotnet.Contracts;
+using hronaspdotnet.Telemetry;
 
 namespace hronaspdotnet.Service;
 
@@ -11,7 +13,6 @@ public interface IBankAccountService {
     Task<BankAccount?> Get(IdentifierRequest identifier, CancellationToken cancellationToken);
     Task<IReadOnlyList<BankAccount>> GetAll(CancellationToken cancellationToken);
     Task<bool> Delete(IdentifierRequest identifier, CancellationToken cancellationToken);
-
     // ------------------------------
     // Single Associations
     // -------------------------------
@@ -21,26 +22,38 @@ public interface IBankAccountService {
 
 public class BankAccountService : IBankAccountService
 {
+    private readonly ApplicationTelemetry _telemetry;
     private readonly IBankAccountRepository _repository;
     private readonly ILogger<BankAccountService> _logger;
+    private readonly IServiceResolver _serviceResolver;
+
 
     public BankAccountService(
-        IBankAccountRepository repository, ILogger<BankAccountService> logger )
+        ApplicationTelemetry telemetry,
+        IBankAccountRepository repository,
+        ILogger<BankAccountService> logger,
+        IServiceResolver serviceResolver)
     {
+        _telemetry = telemetry;
         _repository = repository;
         _logger = logger;
+        _serviceResolver = serviceResolver;
     }
-
 
     public async Task Create(BankAccount model, CancellationToken cancellationToken)
     {
         try
         {
-            await _repository.AddAsync(model, cancellationToken);
+            await _telemetry.Execute(
+                "BankAccount",
+                "CreateBankAccount",
+                () => _repository.AddAsync(model, cancellationToken));
         }
         catch (Exception ex)
         {
-            _logger.LogError($"Unexpected Error: {ex.Message}");
+            _logger.LogError(
+                    ex,
+                    "Unexpected error while creating Transaction.");
         }
     }
 
@@ -59,11 +72,16 @@ public class BankAccountService : IBankAccountService
             existing.AccountNumber = model.AccountNumber;
             existing.RoutingNumber = model.RoutingNumber;
 
-            await _repository.UpdateAsync(existing, cancellationToken);
+            await _telemetry.Execute(
+                "BankAccount",
+                "UpdateBankAccount",
+                () => _repository.UpdateAsync(existing, cancellationToken));
         }
         catch (Exception ex)
         {
-            _logger.LogError($"Unexpected Error: {ex.Message}");
+            _logger.LogError(
+                    ex,
+                    "Unexpected error while creating Transaction.");
             return false;
         }
         return true;
@@ -85,15 +103,19 @@ public class BankAccountService : IBankAccountService
 
         try
         {
-            await _repository.DeleteAsync(existing, cancellationToken);
+            await _telemetry.Execute(
+                "BankAccount",
+                "UpdateBankAccount",
+                () => _repository.DeleteAsync(existing, cancellationToken));
         }
         catch (Exception ex)
         {
-            _logger.LogError($"Unexpected Error: {ex.Message}");
+            _logger.LogError(
+                    ex,
+                    "Unexpected error while creating Transaction.");
             return false;
         }
         return true;
-
     }
 
 

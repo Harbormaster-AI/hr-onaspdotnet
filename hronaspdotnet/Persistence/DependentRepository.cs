@@ -1,4 +1,7 @@
+
+using hronaspdotnet.Contracts;
 using hronaspdotnet.Domain;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace hronaspdotnet.Persistence;
@@ -46,4 +49,5 @@ public class DependentRepository : IDependentRepository
         _db.Dependents.Remove(dependent);
         await _db.SaveChangesAsync(cancellationToken);
     }
+
 }

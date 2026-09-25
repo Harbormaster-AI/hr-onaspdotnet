@@ -1,4 +1,5 @@
 using hronaspdotnet.Domain;
+using hronaspdotnet.Contracts;
 
 namespace hronaspdotnet.Persistence;
 
@@ -9,4 +10,6 @@ public interface IPayrollItemRepository
     Task AddAsync(PayrollItem payrollItem, CancellationToken cancellationToken);
     Task UpdateAsync(PayrollItem payrollItem, CancellationToken cancellationToken);
     Task DeleteAsync(PayrollItem payrollItem, CancellationToken cancellationToken);
+
+
 }

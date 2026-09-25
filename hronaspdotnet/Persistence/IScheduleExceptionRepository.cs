@@ -1,4 +1,5 @@
 using hronaspdotnet.Domain;
+using hronaspdotnet.Contracts;
 
 namespace hronaspdotnet.Persistence;
 
@@ -9,4 +10,6 @@ public interface IScheduleExceptionRepository
     Task AddAsync(ScheduleException scheduleException, CancellationToken cancellationToken);
     Task UpdateAsync(ScheduleException scheduleException, CancellationToken cancellationToken);
     Task DeleteAsync(ScheduleException scheduleException, CancellationToken cancellationToken);
+
+
 }

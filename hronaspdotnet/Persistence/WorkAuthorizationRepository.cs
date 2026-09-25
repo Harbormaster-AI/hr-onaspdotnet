@@ -1,4 +1,7 @@
+
+using hronaspdotnet.Contracts;
 using hronaspdotnet.Domain;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace hronaspdotnet.Persistence;
@@ -44,4 +47,41 @@ public class WorkAuthorizationRepository : IWorkAuthorizationRepository
         _db.WorkAuthorizations.Remove(workAuthorization);
         await _db.SaveChangesAsync(cancellationToken);
     }
+
+
+    public async Task AddToDocumentsAsync(
+        MultipleAssociationRequest request,
+        CancellationToken cancellationToken)
+    {
+        await _db.Documents
+            .Where(document =>
+                request.ChildIds.Contains(document.Id))
+            .ExecuteUpdateAsync(setters =>
+                setters.SetProperty(
+                    document =>
+                        EF.Property<Guid?>(
+                            document,
+                            "WorkAuthorization_Id"),
+                    request.ParentId));
+    }
+
+    public async Task RemoveFromDocumentsAsync(
+        MultipleAssociationRequest request,
+        CancellationToken cancellationToken)
+    {
+        await _db.Documents
+            .Where(document =>
+                request.ChildIds.Contains(document.Id) &&
+                EF.Property<Guid?>(
+                    document,
+                    "WorkAuthorization_Id") == request.ParentId)
+            .ExecuteUpdateAsync(setters =>
+                setters.SetProperty(
+                    document =>
+                        EF.Property<Guid?>(
+                            document,
+                            "WorkAuthorization_Id"),
+                    (Guid?)null));
+    }
+
 }

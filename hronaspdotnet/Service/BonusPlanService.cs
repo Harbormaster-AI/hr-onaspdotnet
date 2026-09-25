@@ -1,6 +1,8 @@
+
 using hronaspdotnet.Domain;
 using hronaspdotnet.Persistence;
 using hronaspdotnet.Contracts;
+using hronaspdotnet.Telemetry;
 
 namespace hronaspdotnet.Service;
 
@@ -11,7 +13,6 @@ public interface IBonusPlanService {
     Task<BonusPlan?> Get(IdentifierRequest identifier, CancellationToken cancellationToken);
     Task<IReadOnlyList<BonusPlan>> GetAll(CancellationToken cancellationToken);
     Task<bool> Delete(IdentifierRequest identifier, CancellationToken cancellationToken);
-
     // ------------------------------
     // Single Associations
     // -------------------------------
@@ -23,26 +24,38 @@ public interface IBonusPlanService {
 
 public class BonusPlanService : IBonusPlanService
 {
+    private readonly ApplicationTelemetry _telemetry;
     private readonly IBonusPlanRepository _repository;
     private readonly ILogger<BonusPlanService> _logger;
+    private readonly IServiceResolver _serviceResolver;
+
 
     public BonusPlanService(
-        IBonusPlanRepository repository, ILogger<BonusPlanService> logger )
+        ApplicationTelemetry telemetry,
+        IBonusPlanRepository repository,
+        ILogger<BonusPlanService> logger,
+        IServiceResolver serviceResolver)
     {
+        _telemetry = telemetry;
         _repository = repository;
         _logger = logger;
+        _serviceResolver = serviceResolver;
     }
-
 
     public async Task Create(BonusPlan model, CancellationToken cancellationToken)
     {
         try
         {
-            await _repository.AddAsync(model, cancellationToken);
+            await _telemetry.Execute(
+                "BonusPlan",
+                "CreateBonusPlan",
+                () => _repository.AddAsync(model, cancellationToken));
         }
         catch (Exception ex)
         {
-            _logger.LogError($"Unexpected Error: {ex.Message}");
+            _logger.LogError(
+                    ex,
+                    "Unexpected error while creating Transaction.");
         }
     }
 
@@ -57,11 +70,16 @@ public class BonusPlanService : IBonusPlanService
             existing.Name = model.Name;
             existing.TargetPercentage = model.TargetPercentage;
 
-            await _repository.UpdateAsync(existing, cancellationToken);
+            await _telemetry.Execute(
+                "BonusPlan",
+                "UpdateBonusPlan",
+                () => _repository.UpdateAsync(existing, cancellationToken));
         }
         catch (Exception ex)
         {
-            _logger.LogError($"Unexpected Error: {ex.Message}");
+            _logger.LogError(
+                    ex,
+                    "Unexpected error while creating Transaction.");
             return false;
         }
         return true;
@@ -83,22 +101,53 @@ public class BonusPlanService : IBonusPlanService
 
         try
         {
-            await _repository.DeleteAsync(existing, cancellationToken);
+            await _telemetry.Execute(
+                "BonusPlan",
+                "UpdateBonusPlan",
+                () => _repository.DeleteAsync(existing, cancellationToken));
         }
         catch (Exception ex)
         {
-            _logger.LogError($"Unexpected Error: {ex.Message}");
+            _logger.LogError(
+                    ex,
+                    "Unexpected error while creating Transaction.");
             return false;
         }
         return true;
-
     }
 
 
     public async Task<bool> AddToCompensationPackages(MultipleAssociationRequest request, CancellationToken cancellationToken) {
+        try {
+            await _telemetry.Execute(
+                "BonusPlan",
+                "AddToCompensationPackages",
+                () => _repository.AddToCompensationPackagesAsync(request, cancellationToken));
+        }
+        catch (Exception ex)
+        {
+           _logger.LogError(
+                   ex,
+                   "Unexpected error while creating Transaction.");
+            return false;
+        }
         return true;
     }
+
     public async Task<bool> RemoveFromCompensationPackages(MultipleAssociationRequest request, CancellationToken cancellationToken) {
+        try {
+            await _telemetry.Execute(
+                "BonusPlan",
+                "RemoveFromCompensationPackages",
+                () => _repository.RemoveFromCompensationPackagesAsync(request, cancellationToken));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(
+                    ex,
+                    "Unexpected error while creating Transaction.");
+            return false;
+        }
         return true;
     }
 

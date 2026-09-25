@@ -1,4 +1,7 @@
+
+using hronaspdotnet.Contracts;
 using hronaspdotnet.Domain;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace hronaspdotnet.Persistence;
@@ -44,4 +47,41 @@ public class LeavePolicyRepository : ILeavePolicyRepository
         _db.LeavePolicys.Remove(leavePolicy);
         await _db.SaveChangesAsync(cancellationToken);
     }
+
+
+    public async Task AddToLeaveRequestsAsync(
+        MultipleAssociationRequest request,
+        CancellationToken cancellationToken)
+    {
+        await _db.LeaveRequests
+            .Where(leaveRequest =>
+                request.ChildIds.Contains(leaveRequest.Id))
+            .ExecuteUpdateAsync(setters =>
+                setters.SetProperty(
+                    leaveRequest =>
+                        EF.Property<Guid?>(
+                            leaveRequest,
+                            "WorkAuthorization_Id"),
+                    request.ParentId));
+    }
+
+    public async Task RemoveFromLeaveRequestsAsync(
+        MultipleAssociationRequest request,
+        CancellationToken cancellationToken)
+    {
+        await _db.LeaveRequests
+            .Where(leaveRequest =>
+                request.ChildIds.Contains(leaveRequest.Id) &&
+                EF.Property<Guid?>(
+                    leaveRequest,
+                    "WorkAuthorization_Id") == request.ParentId)
+            .ExecuteUpdateAsync(setters =>
+                setters.SetProperty(
+                    leaveRequest =>
+                        EF.Property<Guid?>(
+                            leaveRequest,
+                            "WorkAuthorization_Id"),
+                    (Guid?)null));
+    }
+
 }

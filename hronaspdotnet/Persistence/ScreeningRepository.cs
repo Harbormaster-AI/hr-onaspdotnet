@@ -1,4 +1,7 @@
+
+using hronaspdotnet.Contracts;
 using hronaspdotnet.Domain;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace hronaspdotnet.Persistence;
@@ -44,4 +47,5 @@ public class ScreeningRepository : IScreeningRepository
         _db.Screenings.Remove(screening);
         await _db.SaveChangesAsync(cancellationToken);
     }
+
 }

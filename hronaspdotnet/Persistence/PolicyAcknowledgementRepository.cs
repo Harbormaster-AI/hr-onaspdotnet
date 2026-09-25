@@ -1,4 +1,7 @@
+
+using hronaspdotnet.Contracts;
 using hronaspdotnet.Domain;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace hronaspdotnet.Persistence;
@@ -46,4 +49,5 @@ public class PolicyAcknowledgementRepository : IPolicyAcknowledgementRepository
         _db.PolicyAcknowledgements.Remove(policyAcknowledgement);
         await _db.SaveChangesAsync(cancellationToken);
     }
+
 }

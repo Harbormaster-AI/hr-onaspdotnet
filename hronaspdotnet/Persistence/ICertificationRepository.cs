@@ -1,4 +1,5 @@
 using hronaspdotnet.Domain;
+using hronaspdotnet.Contracts;
 
 namespace hronaspdotnet.Persistence;
 
@@ -9,4 +10,6 @@ public interface ICertificationRepository
     Task AddAsync(Certification certification, CancellationToken cancellationToken);
     Task UpdateAsync(Certification certification, CancellationToken cancellationToken);
     Task DeleteAsync(Certification certification, CancellationToken cancellationToken);
+
+
 }

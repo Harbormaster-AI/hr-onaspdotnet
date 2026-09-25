@@ -11,58 +11,58 @@ public class ApplicationDbContext : DbContext
     {
     }
 
-public DbSet<Organization> Organizations => Set<Organization>();
-public DbSet<Department> Departments => Set<Department>();
-public DbSet<Location> Locations => Set<Location>();
-public DbSet<CostCenter> CostCenters => Set<CostCenter>();
-public DbSet<JobFamily> JobFamilys => Set<JobFamily>();
-public DbSet<JobProfile> JobProfiles => Set<JobProfile>();
-public DbSet<Competency> Competencys => Set<Competency>();
-public DbSet<Position> Positions => Set<Position>();
-public DbSet<Employee> Employees => Set<Employee>();
-public DbSet<EmploymentAssignment> EmploymentAssignments => Set<EmploymentAssignment>();
-public DbSet<EmploymentContract> EmploymentContracts => Set<EmploymentContract>();
-public DbSet<WorkSchedule> WorkSchedules => Set<WorkSchedule>();
-public DbSet<WorkShift> WorkShifts => Set<WorkShift>();
-public DbSet<ScheduleException> ScheduleExceptions => Set<ScheduleException>();
-public DbSet<CompensationPackage> CompensationPackages => Set<CompensationPackage>();
-public DbSet<SalaryComponent> SalaryComponents => Set<SalaryComponent>();
-public DbSet<BonusPlan> BonusPlans => Set<BonusPlan>();
-public DbSet<EquityGrant> EquityGrants => Set<EquityGrant>();
-public DbSet<BenefitPlan> BenefitPlans => Set<BenefitPlan>();
-public DbSet<BenefitEnrollment> BenefitEnrollments => Set<BenefitEnrollment>();
-public DbSet<Dependent> Dependents => Set<Dependent>();
-public DbSet<PayrollCalendar> PayrollCalendars => Set<PayrollCalendar>();
-public DbSet<PayrollRun> PayrollRuns => Set<PayrollRun>();
-public DbSet<PayrollItem> PayrollItems => Set<PayrollItem>();
-public DbSet<TaxWithholding> TaxWithholdings => Set<TaxWithholding>();
-public DbSet<PaymentMethod> PaymentMethods => Set<PaymentMethod>();
-public DbSet<Timesheet> Timesheets => Set<Timesheet>();
-public DbSet<TimeEntry> TimeEntrys => Set<TimeEntry>();
-public DbSet<Approval> Approvals => Set<Approval>();
-public DbSet<LeavePolicy> LeavePolicys => Set<LeavePolicy>();
-public DbSet<LeaveRequest> LeaveRequests => Set<LeaveRequest>();
-public DbSet<PerformanceCycle> PerformanceCycles => Set<PerformanceCycle>();
-public DbSet<Goal> Goals => Set<Goal>();
-public DbSet<PerformanceReview> PerformanceReviews => Set<PerformanceReview>();
-public DbSet<CompetencyRating> CompetencyRatings => Set<CompetencyRating>();
-public DbSet<TrainingCourse> TrainingCourses => Set<TrainingCourse>();
-public DbSet<TrainingEnrollment> TrainingEnrollments => Set<TrainingEnrollment>();
-public DbSet<Certification> Certifications => Set<Certification>();
-public DbSet<JobRequisition> JobRequisitions => Set<JobRequisition>();
-public DbSet<Candidate> Candidates => Set<Candidate>();
-public DbSet<JobApplication> JobApplications => Set<JobApplication>();
-public DbSet<Interview> Interviews => Set<Interview>();
-public DbSet<Screening> Screenings => Set<Screening>();
-public DbSet<Offer> Offers => Set<Offer>();
-public DbSet<OnboardingTask> OnboardingTasks => Set<OnboardingTask>();
-public DbSet<BackgroundCheck> BackgroundChecks => Set<BackgroundCheck>();
-public DbSet<Document> Documents => Set<Document>();
-public DbSet<Policy> Policys => Set<Policy>();
-public DbSet<PolicyAcknowledgement> PolicyAcknowledgements => Set<PolicyAcknowledgement>();
-public DbSet<Termination> Terminations => Set<Termination>();
-public DbSet<WorkAuthorization> WorkAuthorizations => Set<WorkAuthorization>();
-public DbSet<BankAccount> BankAccounts => Set<BankAccount>();
+    public DbSet<Organization> Organizations => Set<Organization>();
+    public DbSet<Department> Departments => Set<Department>();
+    public DbSet<Location> Locations => Set<Location>();
+    public DbSet<CostCenter> CostCenters => Set<CostCenter>();
+    public DbSet<JobFamily> JobFamilys => Set<JobFamily>();
+    public DbSet<JobProfile> JobProfiles => Set<JobProfile>();
+    public DbSet<Competency> Competencys => Set<Competency>();
+    public DbSet<Position> Positions => Set<Position>();
+    public DbSet<Employee> Employees => Set<Employee>();
+    public DbSet<EmploymentAssignment> EmploymentAssignments => Set<EmploymentAssignment>();
+    public DbSet<EmploymentContract> EmploymentContracts => Set<EmploymentContract>();
+    public DbSet<WorkSchedule> WorkSchedules => Set<WorkSchedule>();
+    public DbSet<WorkShift> WorkShifts => Set<WorkShift>();
+    public DbSet<ScheduleException> ScheduleExceptions => Set<ScheduleException>();
+    public DbSet<CompensationPackage> CompensationPackages => Set<CompensationPackage>();
+    public DbSet<SalaryComponent> SalaryComponents => Set<SalaryComponent>();
+    public DbSet<BonusPlan> BonusPlans => Set<BonusPlan>();
+    public DbSet<EquityGrant> EquityGrants => Set<EquityGrant>();
+    public DbSet<BenefitPlan> BenefitPlans => Set<BenefitPlan>();
+    public DbSet<BenefitEnrollment> BenefitEnrollments => Set<BenefitEnrollment>();
+    public DbSet<Dependent> Dependents => Set<Dependent>();
+    public DbSet<PayrollCalendar> PayrollCalendars => Set<PayrollCalendar>();
+    public DbSet<PayrollRun> PayrollRuns => Set<PayrollRun>();
+    public DbSet<PayrollItem> PayrollItems => Set<PayrollItem>();
+    public DbSet<TaxWithholding> TaxWithholdings => Set<TaxWithholding>();
+    public DbSet<PaymentMethod> PaymentMethods => Set<PaymentMethod>();
+    public DbSet<Timesheet> Timesheets => Set<Timesheet>();
+    public DbSet<TimeEntry> TimeEntrys => Set<TimeEntry>();
+    public DbSet<Approval> Approvals => Set<Approval>();
+    public DbSet<LeavePolicy> LeavePolicys => Set<LeavePolicy>();
+    public DbSet<LeaveRequest> LeaveRequests => Set<LeaveRequest>();
+    public DbSet<PerformanceCycle> PerformanceCycles => Set<PerformanceCycle>();
+    public DbSet<Goal> Goals => Set<Goal>();
+    public DbSet<PerformanceReview> PerformanceReviews => Set<PerformanceReview>();
+    public DbSet<CompetencyRating> CompetencyRatings => Set<CompetencyRating>();
+    public DbSet<TrainingCourse> TrainingCourses => Set<TrainingCourse>();
+    public DbSet<TrainingEnrollment> TrainingEnrollments => Set<TrainingEnrollment>();
+    public DbSet<Certification> Certifications => Set<Certification>();
+    public DbSet<JobRequisition> JobRequisitions => Set<JobRequisition>();
+    public DbSet<Candidate> Candidates => Set<Candidate>();
+    public DbSet<JobApplication> JobApplications => Set<JobApplication>();
+    public DbSet<Interview> Interviews => Set<Interview>();
+    public DbSet<Screening> Screenings => Set<Screening>();
+    public DbSet<Offer> Offers => Set<Offer>();
+    public DbSet<OnboardingTask> OnboardingTasks => Set<OnboardingTask>();
+    public DbSet<BackgroundCheck> BackgroundChecks => Set<BackgroundCheck>();
+    public DbSet<Document> Documents => Set<Document>();
+    public DbSet<Policy> Policys => Set<Policy>();
+    public DbSet<PolicyAcknowledgement> PolicyAcknowledgements => Set<PolicyAcknowledgement>();
+    public DbSet<Termination> Terminations => Set<Termination>();
+    public DbSet<WorkAuthorization> WorkAuthorizations => Set<WorkAuthorization>();
+    public DbSet<BankAccount> BankAccounts => Set<BankAccount>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -73,37 +73,37 @@ public DbSet<BankAccount> BankAccounts => Set<BankAccount>();
         modelBuilder.Entity<Department>()
             .HasOne<Organization>()
             .WithMany(parent => parent.Departments)
-            .HasForeignKey("Departments_Id");
+            .HasForeignKey("Organization_Id");
 
         // Organization has one or more Locations of type Location
         modelBuilder.Entity<Location>()
             .HasOne<Organization>()
             .WithMany(parent => parent.Locations)
-            .HasForeignKey("Locations_Id");
+            .HasForeignKey("Organization_Id");
 
         // Organization has one or more JobFamilies of type JobFamily
         modelBuilder.Entity<JobFamily>()
             .HasOne<Organization>()
             .WithMany(parent => parent.JobFamilies)
-            .HasForeignKey("JobFamilies_Id");
+            .HasForeignKey("Organization_Id");
 
         // Organization has one or more BenefitPlans of type BenefitPlan
         modelBuilder.Entity<BenefitPlan>()
             .HasOne<Organization>()
             .WithMany(parent => parent.BenefitPlans)
-            .HasForeignKey("BenefitPlans_Id");
+            .HasForeignKey("Organization_Id");
 
         // Organization has one or more CostCenters of type CostCenter
         modelBuilder.Entity<CostCenter>()
             .HasOne<Organization>()
             .WithMany(parent => parent.CostCenters)
-            .HasForeignKey("CostCenters_Id");
+            .HasForeignKey("Organization_Id");
 
         // Organization has one or more PayrollCalendars of type PayrollCalendar
         modelBuilder.Entity<PayrollCalendar>()
             .HasOne<Organization>()
             .WithMany(parent => parent.PayrollCalendars)
-            .HasForeignKey("PayrollCalendars_Id");
+            .HasForeignKey("Organization_Id");
 
         // Department has one Organization of type Organization
         modelBuilder.Entity<Department>()
@@ -128,13 +128,13 @@ public DbSet<BankAccount> BankAccounts => Set<BankAccount>();
         modelBuilder.Entity<Position>()
             .HasOne<Department>()
             .WithMany(parent => parent.Positions)
-            .HasForeignKey("Positions_Id");
+            .HasForeignKey("Department_Id");
 
         // Department has one or more Employees of type Employee
         modelBuilder.Entity<Employee>()
             .HasOne<Department>()
             .WithMany(parent => parent.Employees)
-            .HasForeignKey("Employees_Id");
+            .HasForeignKey("Department_Id");
 
         // Location has one Organization of type Organization
         modelBuilder.Entity<Location>()
@@ -147,19 +147,19 @@ public DbSet<BankAccount> BankAccounts => Set<BankAccount>();
         modelBuilder.Entity<Department>()
             .HasOne<Location>()
             .WithMany(parent => parent.Departments)
-            .HasForeignKey("Departments_Id");
+            .HasForeignKey("Location_Id");
 
         // Location has one or more Positions of type Position
         modelBuilder.Entity<Position>()
             .HasOne<Location>()
             .WithMany(parent => parent.Positions)
-            .HasForeignKey("Positions_Id");
+            .HasForeignKey("Location_Id");
 
         // Location has one or more Employees of type Employee
         modelBuilder.Entity<Employee>()
             .HasOne<Location>()
             .WithMany(parent => parent.Employees)
-            .HasForeignKey("Employees_Id");
+            .HasForeignKey("Location_Id");
 
         // CostCenter has one Organization of type Organization
         modelBuilder.Entity<CostCenter>()
@@ -172,19 +172,19 @@ public DbSet<BankAccount> BankAccounts => Set<BankAccount>();
         modelBuilder.Entity<Department>()
             .HasOne<CostCenter>()
             .WithMany(parent => parent.Departments)
-            .HasForeignKey("Departments_Id");
+            .HasForeignKey("CostCenter_Id");
 
         // CostCenter has one or more Positions of type Position
         modelBuilder.Entity<Position>()
             .HasOne<CostCenter>()
             .WithMany(parent => parent.Positions)
-            .HasForeignKey("Positions_Id");
+            .HasForeignKey("CostCenter_Id");
 
         // CostCenter has one or more Employees of type Employee
         modelBuilder.Entity<Employee>()
             .HasOne<CostCenter>()
             .WithMany(parent => parent.Employees)
-            .HasForeignKey("Employees_Id");
+            .HasForeignKey("CostCenter_Id");
 
         // JobFamily has one Organization of type Organization
         modelBuilder.Entity<JobFamily>()
@@ -197,7 +197,7 @@ public DbSet<BankAccount> BankAccounts => Set<BankAccount>();
         modelBuilder.Entity<JobProfile>()
             .HasOne<JobFamily>()
             .WithMany(parent => parent.JobProfiles)
-            .HasForeignKey("JobProfiles_Id");
+            .HasForeignKey("JobFamily_Id");
 
         // JobProfile has one JobFamily of type JobFamily
         modelBuilder.Entity<JobProfile>()
@@ -210,32 +210,32 @@ public DbSet<BankAccount> BankAccounts => Set<BankAccount>();
         modelBuilder.Entity<Competency>()
             .HasOne<JobProfile>()
             .WithMany(parent => parent.Competencies)
-            .HasForeignKey("Competencies_Id");
+            .HasForeignKey("JobProfile_Id");
 
         // JobProfile has one or more TrainingRecommendations of type TrainingCourse
         modelBuilder.Entity<TrainingCourse>()
             .HasOne<JobProfile>()
             .WithMany(parent => parent.TrainingRecommendations)
-            .HasForeignKey("TrainingRecommendations_Id");
+            .HasForeignKey("JobProfile_Id");
 
         // JobProfile has one or more Positions of type Position
         modelBuilder.Entity<Position>()
             .HasOne<JobProfile>()
             .WithMany(parent => parent.Positions)
-            .HasForeignKey("Positions_Id");
+            .HasForeignKey("JobProfile_Id");
 
 
         // Competency has one or more JobProfiles of type JobProfile
         modelBuilder.Entity<JobProfile>()
             .HasOne<Competency>()
             .WithMany(parent => parent.JobProfiles)
-            .HasForeignKey("JobProfiles_Id");
+            .HasForeignKey("Competency_Id");
 
         // Competency has one or more CompetencyRatings of type CompetencyRating
         modelBuilder.Entity<CompetencyRating>()
             .HasOne<Competency>()
             .WithMany(parent => parent.CompetencyRatings)
-            .HasForeignKey("CompetencyRatings_Id");
+            .HasForeignKey("Competency_Id");
 
         // Position has one Department of type Department
         modelBuilder.Entity<Position>()
@@ -272,13 +272,13 @@ public DbSet<BankAccount> BankAccounts => Set<BankAccount>();
         modelBuilder.Entity<Position>()
             .HasOne<Position>()
             .WithMany(parent => parent.DirectReports)
-            .HasForeignKey("DirectReports_Id");
+            .HasForeignKey("Position_Id");
 
         // Position has one or more Assignments of type EmploymentAssignment
         modelBuilder.Entity<EmploymentAssignment>()
             .HasOne<Position>()
             .WithMany(parent => parent.Assignments)
-            .HasForeignKey("Assignments_Id");
+            .HasForeignKey("Position_Id");
 
         // Employee has one Manager of type Employee
         modelBuilder.Entity<Employee>()
@@ -309,55 +309,55 @@ public DbSet<BankAccount> BankAccounts => Set<BankAccount>();
         modelBuilder.Entity<Employee>()
             .HasOne<Employee>()
             .WithMany(parent => parent.DirectReports)
-            .HasForeignKey("DirectReports_Id");
+            .HasForeignKey("Employee_Id");
 
         // Employee has one or more EmploymentAssignments of type EmploymentAssignment
         modelBuilder.Entity<EmploymentAssignment>()
             .HasOne<Employee>()
             .WithMany(parent => parent.EmploymentAssignments)
-            .HasForeignKey("EmploymentAssignments_Id");
+            .HasForeignKey("Employee_Id");
 
         // Employee has one or more Contracts of type EmploymentContract
         modelBuilder.Entity<EmploymentContract>()
             .HasOne<Employee>()
             .WithMany(parent => parent.Contracts)
-            .HasForeignKey("Contracts_Id");
+            .HasForeignKey("Employee_Id");
 
         // Employee has one or more BenefitEnrollments of type BenefitEnrollment
         modelBuilder.Entity<BenefitEnrollment>()
             .HasOne<Employee>()
             .WithMany(parent => parent.BenefitEnrollments)
-            .HasForeignKey("BenefitEnrollments_Id");
+            .HasForeignKey("Employee_Id");
 
         // Employee has one or more Timesheets of type Timesheet
         modelBuilder.Entity<Timesheet>()
             .HasOne<Employee>()
             .WithMany(parent => parent.Timesheets)
-            .HasForeignKey("Timesheets_Id");
+            .HasForeignKey("Employee_Id");
 
         // Employee has one or more LeaveRequests of type LeaveRequest
         modelBuilder.Entity<LeaveRequest>()
             .HasOne<Employee>()
             .WithMany(parent => parent.LeaveRequests)
-            .HasForeignKey("LeaveRequests_Id");
+            .HasForeignKey("Employee_Id");
 
         // Employee has one or more PerformanceReviews of type PerformanceReview
         modelBuilder.Entity<PerformanceReview>()
             .HasOne<Employee>()
             .WithMany(parent => parent.PerformanceReviews)
-            .HasForeignKey("PerformanceReviews_Id");
+            .HasForeignKey("Employee_Id");
 
         // Employee has one or more TrainingEnrollments of type TrainingEnrollment
         modelBuilder.Entity<TrainingEnrollment>()
             .HasOne<Employee>()
             .WithMany(parent => parent.TrainingEnrollments)
-            .HasForeignKey("TrainingEnrollments_Id");
+            .HasForeignKey("Employee_Id");
 
         // Employee has one or more WorkAuthorizations of type WorkAuthorization
         modelBuilder.Entity<WorkAuthorization>()
             .HasOne<Employee>()
             .WithMany(parent => parent.WorkAuthorizations)
-            .HasForeignKey("WorkAuthorizations_Id");
+            .HasForeignKey("Employee_Id");
 
         // EmploymentAssignment has one Employee of type Employee
         modelBuilder.Entity<EmploymentAssignment>()
@@ -414,19 +414,19 @@ public DbSet<BankAccount> BankAccounts => Set<BankAccount>();
         modelBuilder.Entity<EmploymentContract>()
             .HasOne<WorkSchedule>()
             .WithMany(parent => parent.Contracts)
-            .HasForeignKey("Contracts_Id");
+            .HasForeignKey("WorkSchedule_Id");
 
         // WorkSchedule has one or more Shifts of type WorkShift
         modelBuilder.Entity<WorkShift>()
             .HasOne<WorkSchedule>()
             .WithMany(parent => parent.Shifts)
-            .HasForeignKey("Shifts_Id");
+            .HasForeignKey("WorkSchedule_Id");
 
         // WorkSchedule has one or more Exceptions of type ScheduleException
         modelBuilder.Entity<ScheduleException>()
             .HasOne<WorkSchedule>()
             .WithMany(parent => parent.Exceptions)
-            .HasForeignKey("Exceptions_Id");
+            .HasForeignKey("WorkSchedule_Id");
 
         // WorkShift has one WorkSchedule of type WorkSchedule
         modelBuilder.Entity<WorkShift>()
@@ -459,19 +459,19 @@ public DbSet<BankAccount> BankAccounts => Set<BankAccount>();
         modelBuilder.Entity<SalaryComponent>()
             .HasOne<CompensationPackage>()
             .WithMany(parent => parent.SalaryComponents)
-            .HasForeignKey("SalaryComponents_Id");
+            .HasForeignKey("CompensationPackage_Id");
 
         // CompensationPackage has one or more BonusPlans of type BonusPlan
         modelBuilder.Entity<BonusPlan>()
             .HasOne<CompensationPackage>()
             .WithMany(parent => parent.BonusPlans)
-            .HasForeignKey("BonusPlans_Id");
+            .HasForeignKey("CompensationPackage_Id");
 
         // CompensationPackage has one or more EquityGrants of type EquityGrant
         modelBuilder.Entity<EquityGrant>()
             .HasOne<CompensationPackage>()
             .WithMany(parent => parent.EquityGrants)
-            .HasForeignKey("EquityGrants_Id");
+            .HasForeignKey("CompensationPackage_Id");
 
         // SalaryComponent has one CompensationPackage of type CompensationPackage
         modelBuilder.Entity<SalaryComponent>()
@@ -485,7 +485,7 @@ public DbSet<BankAccount> BankAccounts => Set<BankAccount>();
         modelBuilder.Entity<CompensationPackage>()
             .HasOne<BonusPlan>()
             .WithMany(parent => parent.CompensationPackages)
-            .HasForeignKey("CompensationPackages_Id");
+            .HasForeignKey("BonusPlan_Id");
 
         // EquityGrant has one CompensationPackage of type CompensationPackage
         modelBuilder.Entity<EquityGrant>()
@@ -505,7 +505,7 @@ public DbSet<BankAccount> BankAccounts => Set<BankAccount>();
         modelBuilder.Entity<BenefitEnrollment>()
             .HasOne<BenefitPlan>()
             .WithMany(parent => parent.Enrollments)
-            .HasForeignKey("Enrollments_Id");
+            .HasForeignKey("BenefitPlan_Id");
 
         // BenefitEnrollment has one BenefitPlan of type BenefitPlan
         modelBuilder.Entity<BenefitEnrollment>()
@@ -524,7 +524,7 @@ public DbSet<BankAccount> BankAccounts => Set<BankAccount>();
         modelBuilder.Entity<Dependent>()
             .HasOne<BenefitEnrollment>()
             .WithMany(parent => parent.Dependents)
-            .HasForeignKey("Dependents_Id");
+            .HasForeignKey("BenefitEnrollment_Id");
 
         // Dependent has one BenefitEnrollment of type BenefitEnrollment
         modelBuilder.Entity<Dependent>()
@@ -550,13 +550,13 @@ public DbSet<BankAccount> BankAccounts => Set<BankAccount>();
         modelBuilder.Entity<PayrollRun>()
             .HasOne<PayrollCalendar>()
             .WithMany(parent => parent.PayrollRuns)
-            .HasForeignKey("PayrollRuns_Id");
+            .HasForeignKey("PayrollCalendar_Id");
 
         // PayrollCalendar has one or more Employees of type Employee
         modelBuilder.Entity<Employee>()
             .HasOne<PayrollCalendar>()
             .WithMany(parent => parent.Employees)
-            .HasForeignKey("Employees_Id");
+            .HasForeignKey("PayrollCalendar_Id");
 
         // PayrollRun has one PayrollCalendar of type PayrollCalendar
         modelBuilder.Entity<PayrollRun>()
@@ -569,7 +569,7 @@ public DbSet<BankAccount> BankAccounts => Set<BankAccount>();
         modelBuilder.Entity<PayrollItem>()
             .HasOne<PayrollRun>()
             .WithMany(parent => parent.PayrollItems)
-            .HasForeignKey("PayrollItems_Id");
+            .HasForeignKey("PayrollRun_Id");
 
         // PayrollItem has one PayrollRun of type PayrollRun
         modelBuilder.Entity<PayrollItem>()
@@ -615,13 +615,13 @@ public DbSet<BankAccount> BankAccounts => Set<BankAccount>();
         modelBuilder.Entity<TimeEntry>()
             .HasOne<Timesheet>()
             .WithMany(parent => parent.TimeEntries)
-            .HasForeignKey("TimeEntries_Id");
+            .HasForeignKey("Timesheet_Id");
 
         // Timesheet has one or more Approvals of type Approval
         modelBuilder.Entity<Approval>()
             .HasOne<Timesheet>()
             .WithMany(parent => parent.Approvals)
-            .HasForeignKey("Approvals_Id");
+            .HasForeignKey("Timesheet_Id");
 
         // TimeEntry has one Timesheet of type Timesheet
         modelBuilder.Entity<TimeEntry>()
@@ -672,7 +672,7 @@ public DbSet<BankAccount> BankAccounts => Set<BankAccount>();
         modelBuilder.Entity<LeaveRequest>()
             .HasOne<LeavePolicy>()
             .WithMany(parent => parent.LeaveRequests)
-            .HasForeignKey("LeaveRequests_Id");
+            .HasForeignKey("LeavePolicy_Id");
 
         // LeaveRequest has one Employee of type Employee
         modelBuilder.Entity<LeaveRequest>()
@@ -691,7 +691,7 @@ public DbSet<BankAccount> BankAccounts => Set<BankAccount>();
         modelBuilder.Entity<Approval>()
             .HasOne<LeaveRequest>()
             .WithMany(parent => parent.Approvals)
-            .HasForeignKey("Approvals_Id");
+            .HasForeignKey("LeaveRequest_Id");
 
         // PerformanceCycle has one Organization of type Organization
         modelBuilder.Entity<PerformanceCycle>()
@@ -704,13 +704,13 @@ public DbSet<BankAccount> BankAccounts => Set<BankAccount>();
         modelBuilder.Entity<PerformanceReview>()
             .HasOne<PerformanceCycle>()
             .WithMany(parent => parent.Reviews)
-            .HasForeignKey("Reviews_Id");
+            .HasForeignKey("PerformanceCycle_Id");
 
         // PerformanceCycle has one or more Goals of type Goal
         modelBuilder.Entity<Goal>()
             .HasOne<PerformanceCycle>()
             .WithMany(parent => parent.Goals)
-            .HasForeignKey("Goals_Id");
+            .HasForeignKey("PerformanceCycle_Id");
 
         // Goal has one Employee of type Employee
         modelBuilder.Entity<Goal>()
@@ -735,7 +735,7 @@ public DbSet<BankAccount> BankAccounts => Set<BankAccount>();
         modelBuilder.Entity<Goal>()
             .HasOne<Goal>()
             .WithMany(parent => parent.ChildGoals)
-            .HasForeignKey("ChildGoals_Id");
+            .HasForeignKey("Goal_Id");
 
         // PerformanceReview has one Employee of type Employee
         modelBuilder.Entity<PerformanceReview>()
@@ -760,13 +760,13 @@ public DbSet<BankAccount> BankAccounts => Set<BankAccount>();
         modelBuilder.Entity<CompetencyRating>()
             .HasOne<PerformanceReview>()
             .WithMany(parent => parent.CompetencyRatings)
-            .HasForeignKey("CompetencyRatings_Id");
+            .HasForeignKey("PerformanceReview_Id");
 
         // PerformanceReview has one or more Goals of type Goal
         modelBuilder.Entity<Goal>()
             .HasOne<PerformanceReview>()
             .WithMany(parent => parent.Goals)
-            .HasForeignKey("Goals_Id");
+            .HasForeignKey("PerformanceReview_Id");
 
         // CompetencyRating has one Review of type PerformanceReview
         modelBuilder.Entity<CompetencyRating>()
@@ -786,19 +786,19 @@ public DbSet<BankAccount> BankAccounts => Set<BankAccount>();
         modelBuilder.Entity<TrainingCourse>()
             .HasOne<TrainingCourse>()
             .WithMany(parent => parent.Prerequisites)
-            .HasForeignKey("Prerequisites_Id");
+            .HasForeignKey("TrainingCourse_Id");
 
         // TrainingCourse has one or more Enrollments of type TrainingEnrollment
         modelBuilder.Entity<TrainingEnrollment>()
             .HasOne<TrainingCourse>()
             .WithMany(parent => parent.Enrollments)
-            .HasForeignKey("Enrollments_Id");
+            .HasForeignKey("TrainingCourse_Id");
 
         // TrainingCourse has one or more JobProfiles of type JobProfile
         modelBuilder.Entity<JobProfile>()
             .HasOne<TrainingCourse>()
             .WithMany(parent => parent.JobProfiles)
-            .HasForeignKey("JobProfiles_Id");
+            .HasForeignKey("TrainingCourse_Id");
 
         // TrainingEnrollment has one Course of type TrainingCourse
         modelBuilder.Entity<TrainingEnrollment>()
@@ -861,44 +861,44 @@ public DbSet<BankAccount> BankAccounts => Set<BankAccount>();
         modelBuilder.Entity<Candidate>()
             .HasOne<JobRequisition>()
             .WithMany(parent => parent.Candidates)
-            .HasForeignKey("Candidates_Id");
+            .HasForeignKey("JobRequisition_Id");
 
         // JobRequisition has one or more Interviews of type Interview
         modelBuilder.Entity<Interview>()
             .HasOne<JobRequisition>()
             .WithMany(parent => parent.Interviews)
-            .HasForeignKey("Interviews_Id");
+            .HasForeignKey("JobRequisition_Id");
 
         // JobRequisition has one or more Offers of type Offer
         modelBuilder.Entity<Offer>()
             .HasOne<JobRequisition>()
             .WithMany(parent => parent.Offers)
-            .HasForeignKey("Offers_Id");
+            .HasForeignKey("JobRequisition_Id");
 
 
         // Candidate has one or more Applications of type JobApplication
         modelBuilder.Entity<JobApplication>()
             .HasOne<Candidate>()
             .WithMany(parent => parent.Applications)
-            .HasForeignKey("Applications_Id");
+            .HasForeignKey("Candidate_Id");
 
         // Candidate has one or more Interviews of type Interview
         modelBuilder.Entity<Interview>()
             .HasOne<Candidate>()
             .WithMany(parent => parent.Interviews)
-            .HasForeignKey("Interviews_Id");
+            .HasForeignKey("Candidate_Id");
 
         // Candidate has one or more Offers of type Offer
         modelBuilder.Entity<Offer>()
             .HasOne<Candidate>()
             .WithMany(parent => parent.Offers)
-            .HasForeignKey("Offers_Id");
+            .HasForeignKey("Candidate_Id");
 
         // Candidate has one or more Documents of type Document
         modelBuilder.Entity<Document>()
             .HasOne<Candidate>()
             .WithMany(parent => parent.Documents)
-            .HasForeignKey("Documents_Id");
+            .HasForeignKey("Candidate_Id");
 
         // JobApplication has one Candidate of type Candidate
         modelBuilder.Entity<JobApplication>()
@@ -917,7 +917,7 @@ public DbSet<BankAccount> BankAccounts => Set<BankAccount>();
         modelBuilder.Entity<Screening>()
             .HasOne<JobApplication>()
             .WithMany(parent => parent.Screenings)
-            .HasForeignKey("Screenings_Id");
+            .HasForeignKey("JobApplication_Id");
 
         // Interview has one Requisition of type JobRequisition
         modelBuilder.Entity<Interview>()
@@ -936,7 +936,7 @@ public DbSet<BankAccount> BankAccounts => Set<BankAccount>();
         modelBuilder.Entity<Employee>()
             .HasOne<Interview>()
             .WithMany(parent => parent.Interviewers)
-            .HasForeignKey("Interviewers_Id");
+            .HasForeignKey("Interview_Id");
 
         // Screening has one Application of type JobApplication
         modelBuilder.Entity<Screening>()
@@ -993,7 +993,7 @@ public DbSet<BankAccount> BankAccounts => Set<BankAccount>();
         modelBuilder.Entity<OnboardingTask>()
             .HasOne<OnboardingTask>()
             .WithMany(parent => parent.Dependencies)
-            .HasForeignKey("Dependencies_Id");
+            .HasForeignKey("OnboardingTask_Id");
 
         // BackgroundCheck has one Candidate of type Candidate
         modelBuilder.Entity<BackgroundCheck>()
@@ -1038,7 +1038,7 @@ public DbSet<BankAccount> BankAccounts => Set<BankAccount>();
         modelBuilder.Entity<PolicyAcknowledgement>()
             .HasOne<Policy>()
             .WithMany(parent => parent.Acknowledgements)
-            .HasForeignKey("Acknowledgements_Id");
+            .HasForeignKey("Policy_Id");
 
         // PolicyAcknowledgement has one Policy of type Policy
         modelBuilder.Entity<PolicyAcknowledgement>()
@@ -1077,7 +1077,7 @@ public DbSet<BankAccount> BankAccounts => Set<BankAccount>();
         modelBuilder.Entity<Document>()
             .HasOne<WorkAuthorization>()
             .WithMany(parent => parent.Documents)
-            .HasForeignKey("Documents_Id");
+            .HasForeignKey("WorkAuthorization_Id");
 
 
     }

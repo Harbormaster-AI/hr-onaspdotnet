@@ -1,4 +1,5 @@
 using hronaspdotnet.Domain;
+using hronaspdotnet.Contracts;
 
 namespace hronaspdotnet.Persistence;
 
@@ -9,4 +10,6 @@ public interface IEmploymentAssignmentRepository
     Task AddAsync(EmploymentAssignment employmentAssignment, CancellationToken cancellationToken);
     Task UpdateAsync(EmploymentAssignment employmentAssignment, CancellationToken cancellationToken);
     Task DeleteAsync(EmploymentAssignment employmentAssignment, CancellationToken cancellationToken);
+
+
 }

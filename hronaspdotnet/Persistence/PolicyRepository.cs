@@ -1,4 +1,7 @@
+
+using hronaspdotnet.Contracts;
 using hronaspdotnet.Domain;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace hronaspdotnet.Persistence;
@@ -44,4 +47,41 @@ public class PolicyRepository : IPolicyRepository
         _db.Policys.Remove(policy);
         await _db.SaveChangesAsync(cancellationToken);
     }
+
+
+    public async Task AddToAcknowledgementsAsync(
+        MultipleAssociationRequest request,
+        CancellationToken cancellationToken)
+    {
+        await _db.PolicyAcknowledgements
+            .Where(policyAcknowledgement =>
+                request.ChildIds.Contains(policyAcknowledgement.Id))
+            .ExecuteUpdateAsync(setters =>
+                setters.SetProperty(
+                    policyAcknowledgement =>
+                        EF.Property<Guid?>(
+                            policyAcknowledgement,
+                            "WorkAuthorization_Id"),
+                    request.ParentId));
+    }
+
+    public async Task RemoveFromAcknowledgementsAsync(
+        MultipleAssociationRequest request,
+        CancellationToken cancellationToken)
+    {
+        await _db.PolicyAcknowledgements
+            .Where(policyAcknowledgement =>
+                request.ChildIds.Contains(policyAcknowledgement.Id) &&
+                EF.Property<Guid?>(
+                    policyAcknowledgement,
+                    "WorkAuthorization_Id") == request.ParentId)
+            .ExecuteUpdateAsync(setters =>
+                setters.SetProperty(
+                    policyAcknowledgement =>
+                        EF.Property<Guid?>(
+                            policyAcknowledgement,
+                            "WorkAuthorization_Id"),
+                    (Guid?)null));
+    }
+
 }

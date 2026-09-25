@@ -1,4 +1,7 @@
+
+using hronaspdotnet.Contracts;
 using hronaspdotnet.Domain;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace hronaspdotnet.Persistence;
@@ -42,4 +45,5 @@ public class BankAccountRepository : IBankAccountRepository
         _db.BankAccounts.Remove(bankAccount);
         await _db.SaveChangesAsync(cancellationToken);
     }
+
 }

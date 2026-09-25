@@ -1,4 +1,5 @@
 using hronaspdotnet.Domain;
+using hronaspdotnet.Contracts;
 
 namespace hronaspdotnet.Persistence;
 
@@ -9,4 +10,6 @@ public interface IPaymentMethodRepository
     Task AddAsync(PaymentMethod paymentMethod, CancellationToken cancellationToken);
     Task UpdateAsync(PaymentMethod paymentMethod, CancellationToken cancellationToken);
     Task DeleteAsync(PaymentMethod paymentMethod, CancellationToken cancellationToken);
+
+
 }

@@ -1,4 +1,7 @@
+
+using hronaspdotnet.Contracts;
 using hronaspdotnet.Domain;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace hronaspdotnet.Persistence;
@@ -46,4 +49,41 @@ public class InterviewRepository : IInterviewRepository
         _db.Interviews.Remove(interview);
         await _db.SaveChangesAsync(cancellationToken);
     }
+
+
+    public async Task AddToInterviewersAsync(
+        MultipleAssociationRequest request,
+        CancellationToken cancellationToken)
+    {
+        await _db.Employees
+            .Where(employee =>
+                request.ChildIds.Contains(employee.Id))
+            .ExecuteUpdateAsync(setters =>
+                setters.SetProperty(
+                    employee =>
+                        EF.Property<Guid?>(
+                            employee,
+                            "WorkAuthorization_Id"),
+                    request.ParentId));
+    }
+
+    public async Task RemoveFromInterviewersAsync(
+        MultipleAssociationRequest request,
+        CancellationToken cancellationToken)
+    {
+        await _db.Employees
+            .Where(employee =>
+                request.ChildIds.Contains(employee.Id) &&
+                EF.Property<Guid?>(
+                    employee,
+                    "WorkAuthorization_Id") == request.ParentId)
+            .ExecuteUpdateAsync(setters =>
+                setters.SetProperty(
+                    employee =>
+                        EF.Property<Guid?>(
+                            employee,
+                            "WorkAuthorization_Id"),
+                    (Guid?)null));
+    }
+
 }

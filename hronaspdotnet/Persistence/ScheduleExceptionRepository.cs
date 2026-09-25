@@ -1,4 +1,7 @@
+
+using hronaspdotnet.Contracts;
 using hronaspdotnet.Domain;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace hronaspdotnet.Persistence;
@@ -46,4 +49,5 @@ public class ScheduleExceptionRepository : IScheduleExceptionRepository
         _db.ScheduleExceptions.Remove(scheduleException);
         await _db.SaveChangesAsync(cancellationToken);
     }
+
 }

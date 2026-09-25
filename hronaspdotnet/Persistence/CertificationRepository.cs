@@ -1,4 +1,7 @@
+
+using hronaspdotnet.Contracts;
 using hronaspdotnet.Domain;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace hronaspdotnet.Persistence;
@@ -46,4 +49,5 @@ public class CertificationRepository : ICertificationRepository
         _db.Certifications.Remove(certification);
         await _db.SaveChangesAsync(cancellationToken);
     }
+
 }

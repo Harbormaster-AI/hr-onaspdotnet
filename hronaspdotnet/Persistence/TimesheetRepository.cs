@@ -1,4 +1,7 @@
+
+using hronaspdotnet.Contracts;
 using hronaspdotnet.Domain;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace hronaspdotnet.Persistence;
@@ -44,4 +47,77 @@ public class TimesheetRepository : ITimesheetRepository
         _db.Timesheets.Remove(timesheet);
         await _db.SaveChangesAsync(cancellationToken);
     }
+
+
+    public async Task AddToTimeEntriesAsync(
+        MultipleAssociationRequest request,
+        CancellationToken cancellationToken)
+    {
+        await _db.TimeEntrys
+            .Where(timeEntry =>
+                request.ChildIds.Contains(timeEntry.Id))
+            .ExecuteUpdateAsync(setters =>
+                setters.SetProperty(
+                    timeEntry =>
+                        EF.Property<Guid?>(
+                            timeEntry,
+                            "WorkAuthorization_Id"),
+                    request.ParentId));
+    }
+
+    public async Task RemoveFromTimeEntriesAsync(
+        MultipleAssociationRequest request,
+        CancellationToken cancellationToken)
+    {
+        await _db.TimeEntrys
+            .Where(timeEntry =>
+                request.ChildIds.Contains(timeEntry.Id) &&
+                EF.Property<Guid?>(
+                    timeEntry,
+                    "WorkAuthorization_Id") == request.ParentId)
+            .ExecuteUpdateAsync(setters =>
+                setters.SetProperty(
+                    timeEntry =>
+                        EF.Property<Guid?>(
+                            timeEntry,
+                            "WorkAuthorization_Id"),
+                    (Guid?)null));
+    }
+
+
+    public async Task AddToApprovalsAsync(
+        MultipleAssociationRequest request,
+        CancellationToken cancellationToken)
+    {
+        await _db.Approvals
+            .Where(approval =>
+                request.ChildIds.Contains(approval.Id))
+            .ExecuteUpdateAsync(setters =>
+                setters.SetProperty(
+                    approval =>
+                        EF.Property<Guid?>(
+                            approval,
+                            "WorkAuthorization_Id"),
+                    request.ParentId));
+    }
+
+    public async Task RemoveFromApprovalsAsync(
+        MultipleAssociationRequest request,
+        CancellationToken cancellationToken)
+    {
+        await _db.Approvals
+            .Where(approval =>
+                request.ChildIds.Contains(approval.Id) &&
+                EF.Property<Guid?>(
+                    approval,
+                    "WorkAuthorization_Id") == request.ParentId)
+            .ExecuteUpdateAsync(setters =>
+                setters.SetProperty(
+                    approval =>
+                        EF.Property<Guid?>(
+                            approval,
+                            "WorkAuthorization_Id"),
+                    (Guid?)null));
+    }
+
 }

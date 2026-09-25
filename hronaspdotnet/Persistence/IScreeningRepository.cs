@@ -1,4 +1,5 @@
 using hronaspdotnet.Domain;
+using hronaspdotnet.Contracts;
 
 namespace hronaspdotnet.Persistence;
 
@@ -9,4 +10,6 @@ public interface IScreeningRepository
     Task AddAsync(Screening screening, CancellationToken cancellationToken);
     Task UpdateAsync(Screening screening, CancellationToken cancellationToken);
     Task DeleteAsync(Screening screening, CancellationToken cancellationToken);
+
+
 }

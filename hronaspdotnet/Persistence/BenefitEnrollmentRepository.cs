@@ -1,4 +1,7 @@
+
+using hronaspdotnet.Contracts;
 using hronaspdotnet.Domain;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace hronaspdotnet.Persistence;
@@ -46,4 +49,41 @@ public class BenefitEnrollmentRepository : IBenefitEnrollmentRepository
         _db.BenefitEnrollments.Remove(benefitEnrollment);
         await _db.SaveChangesAsync(cancellationToken);
     }
+
+
+    public async Task AddToDependentsAsync(
+        MultipleAssociationRequest request,
+        CancellationToken cancellationToken)
+    {
+        await _db.Dependents
+            .Where(dependent =>
+                request.ChildIds.Contains(dependent.Id))
+            .ExecuteUpdateAsync(setters =>
+                setters.SetProperty(
+                    dependent =>
+                        EF.Property<Guid?>(
+                            dependent,
+                            "WorkAuthorization_Id"),
+                    request.ParentId));
+    }
+
+    public async Task RemoveFromDependentsAsync(
+        MultipleAssociationRequest request,
+        CancellationToken cancellationToken)
+    {
+        await _db.Dependents
+            .Where(dependent =>
+                request.ChildIds.Contains(dependent.Id) &&
+                EF.Property<Guid?>(
+                    dependent,
+                    "WorkAuthorization_Id") == request.ParentId)
+            .ExecuteUpdateAsync(setters =>
+                setters.SetProperty(
+                    dependent =>
+                        EF.Property<Guid?>(
+                            dependent,
+                            "WorkAuthorization_Id"),
+                    (Guid?)null));
+    }
+
 }

@@ -1,4 +1,5 @@
 using hronaspdotnet.Domain;
+using hronaspdotnet.Contracts;
 
 namespace hronaspdotnet.Persistence;
 
@@ -9,4 +10,8 @@ public interface IWorkAuthorizationRepository
     Task AddAsync(WorkAuthorization workAuthorization, CancellationToken cancellationToken);
     Task UpdateAsync(WorkAuthorization workAuthorization, CancellationToken cancellationToken);
     Task DeleteAsync(WorkAuthorization workAuthorization, CancellationToken cancellationToken);
+
+    Task AddToDocumentsAsync( MultipleAssociationRequest request, CancellationToken cancellationToken);
+    Task RemoveFromDocumentsAsync( MultipleAssociationRequest request, CancellationToken cancellationToken);
+
 }

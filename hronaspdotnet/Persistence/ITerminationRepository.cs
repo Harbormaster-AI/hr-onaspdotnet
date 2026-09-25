@@ -1,4 +1,5 @@
 using hronaspdotnet.Domain;
+using hronaspdotnet.Contracts;
 
 namespace hronaspdotnet.Persistence;
 
@@ -9,4 +10,6 @@ public interface ITerminationRepository
     Task AddAsync(Termination termination, CancellationToken cancellationToken);
     Task UpdateAsync(Termination termination, CancellationToken cancellationToken);
     Task DeleteAsync(Termination termination, CancellationToken cancellationToken);
+
+
 }

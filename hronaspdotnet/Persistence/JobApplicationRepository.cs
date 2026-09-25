@@ -1,4 +1,7 @@
+
+using hronaspdotnet.Contracts;
 using hronaspdotnet.Domain;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace hronaspdotnet.Persistence;
@@ -46,4 +49,41 @@ public class JobApplicationRepository : IJobApplicationRepository
         _db.JobApplications.Remove(jobApplication);
         await _db.SaveChangesAsync(cancellationToken);
     }
+
+
+    public async Task AddToScreeningsAsync(
+        MultipleAssociationRequest request,
+        CancellationToken cancellationToken)
+    {
+        await _db.Screenings
+            .Where(screening =>
+                request.ChildIds.Contains(screening.Id))
+            .ExecuteUpdateAsync(setters =>
+                setters.SetProperty(
+                    screening =>
+                        EF.Property<Guid?>(
+                            screening,
+                            "WorkAuthorization_Id"),
+                    request.ParentId));
+    }
+
+    public async Task RemoveFromScreeningsAsync(
+        MultipleAssociationRequest request,
+        CancellationToken cancellationToken)
+    {
+        await _db.Screenings
+            .Where(screening =>
+                request.ChildIds.Contains(screening.Id) &&
+                EF.Property<Guid?>(
+                    screening,
+                    "WorkAuthorization_Id") == request.ParentId)
+            .ExecuteUpdateAsync(setters =>
+                setters.SetProperty(
+                    screening =>
+                        EF.Property<Guid?>(
+                            screening,
+                            "WorkAuthorization_Id"),
+                    (Guid?)null));
+    }
+
 }

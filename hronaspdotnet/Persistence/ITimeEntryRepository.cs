@@ -1,4 +1,5 @@
 using hronaspdotnet.Domain;
+using hronaspdotnet.Contracts;
 
 namespace hronaspdotnet.Persistence;
 
@@ -9,4 +10,6 @@ public interface ITimeEntryRepository
     Task AddAsync(TimeEntry timeEntry, CancellationToken cancellationToken);
     Task UpdateAsync(TimeEntry timeEntry, CancellationToken cancellationToken);
     Task DeleteAsync(TimeEntry timeEntry, CancellationToken cancellationToken);
+
+
 }

@@ -1,4 +1,7 @@
+
+using hronaspdotnet.Contracts;
 using hronaspdotnet.Domain;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace hronaspdotnet.Persistence;
@@ -50,4 +53,5 @@ public class OfferRepository : IOfferRepository
         _db.Offers.Remove(offer);
         await _db.SaveChangesAsync(cancellationToken);
     }
+
 }

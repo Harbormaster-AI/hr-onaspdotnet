@@ -1,4 +1,5 @@
 using hronaspdotnet.Domain;
+using hronaspdotnet.Contracts;
 
 namespace hronaspdotnet.Persistence;
 
@@ -9,4 +10,6 @@ public interface ICompetencyRatingRepository
     Task AddAsync(CompetencyRating competencyRating, CancellationToken cancellationToken);
     Task UpdateAsync(CompetencyRating competencyRating, CancellationToken cancellationToken);
     Task DeleteAsync(CompetencyRating competencyRating, CancellationToken cancellationToken);
+
+
 }

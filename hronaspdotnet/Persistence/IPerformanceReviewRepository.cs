@@ -1,4 +1,5 @@
 using hronaspdotnet.Domain;
+using hronaspdotnet.Contracts;
 
 namespace hronaspdotnet.Persistence;
 
@@ -9,4 +10,10 @@ public interface IPerformanceReviewRepository
     Task AddAsync(PerformanceReview performanceReview, CancellationToken cancellationToken);
     Task UpdateAsync(PerformanceReview performanceReview, CancellationToken cancellationToken);
     Task DeleteAsync(PerformanceReview performanceReview, CancellationToken cancellationToken);
+
+    Task AddToCompetencyRatingsAsync( MultipleAssociationRequest request, CancellationToken cancellationToken);
+    Task RemoveFromCompetencyRatingsAsync( MultipleAssociationRequest request, CancellationToken cancellationToken);
+    Task AddToGoalsAsync( MultipleAssociationRequest request, CancellationToken cancellationToken);
+    Task RemoveFromGoalsAsync( MultipleAssociationRequest request, CancellationToken cancellationToken);
+
 }

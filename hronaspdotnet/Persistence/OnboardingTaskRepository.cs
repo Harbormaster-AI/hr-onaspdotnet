@@ -1,4 +1,7 @@
+
+using hronaspdotnet.Contracts;
 using hronaspdotnet.Domain;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace hronaspdotnet.Persistence;
@@ -48,4 +51,41 @@ public class OnboardingTaskRepository : IOnboardingTaskRepository
         _db.OnboardingTasks.Remove(onboardingTask);
         await _db.SaveChangesAsync(cancellationToken);
     }
+
+
+    public async Task AddToDependenciesAsync(
+        MultipleAssociationRequest request,
+        CancellationToken cancellationToken)
+    {
+        await _db.OnboardingTasks
+            .Where(onboardingTask =>
+                request.ChildIds.Contains(onboardingTask.Id))
+            .ExecuteUpdateAsync(setters =>
+                setters.SetProperty(
+                    onboardingTask =>
+                        EF.Property<Guid?>(
+                            onboardingTask,
+                            "WorkAuthorization_Id"),
+                    request.ParentId));
+    }
+
+    public async Task RemoveFromDependenciesAsync(
+        MultipleAssociationRequest request,
+        CancellationToken cancellationToken)
+    {
+        await _db.OnboardingTasks
+            .Where(onboardingTask =>
+                request.ChildIds.Contains(onboardingTask.Id) &&
+                EF.Property<Guid?>(
+                    onboardingTask,
+                    "WorkAuthorization_Id") == request.ParentId)
+            .ExecuteUpdateAsync(setters =>
+                setters.SetProperty(
+                    onboardingTask =>
+                        EF.Property<Guid?>(
+                            onboardingTask,
+                            "WorkAuthorization_Id"),
+                    (Guid?)null));
+    }
+
 }

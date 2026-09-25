@@ -1,4 +1,7 @@
+
+using hronaspdotnet.Contracts;
 using hronaspdotnet.Domain;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace hronaspdotnet.Persistence;
@@ -42,4 +45,113 @@ public class WorkScheduleRepository : IWorkScheduleRepository
         _db.WorkSchedules.Remove(workSchedule);
         await _db.SaveChangesAsync(cancellationToken);
     }
+
+
+    public async Task AddToContractsAsync(
+        MultipleAssociationRequest request,
+        CancellationToken cancellationToken)
+    {
+        await _db.EmploymentContracts
+            .Where(employmentContract =>
+                request.ChildIds.Contains(employmentContract.Id))
+            .ExecuteUpdateAsync(setters =>
+                setters.SetProperty(
+                    employmentContract =>
+                        EF.Property<Guid?>(
+                            employmentContract,
+                            "WorkAuthorization_Id"),
+                    request.ParentId));
+    }
+
+    public async Task RemoveFromContractsAsync(
+        MultipleAssociationRequest request,
+        CancellationToken cancellationToken)
+    {
+        await _db.EmploymentContracts
+            .Where(employmentContract =>
+                request.ChildIds.Contains(employmentContract.Id) &&
+                EF.Property<Guid?>(
+                    employmentContract,
+                    "WorkAuthorization_Id") == request.ParentId)
+            .ExecuteUpdateAsync(setters =>
+                setters.SetProperty(
+                    employmentContract =>
+                        EF.Property<Guid?>(
+                            employmentContract,
+                            "WorkAuthorization_Id"),
+                    (Guid?)null));
+    }
+
+
+    public async Task AddToShiftsAsync(
+        MultipleAssociationRequest request,
+        CancellationToken cancellationToken)
+    {
+        await _db.WorkShifts
+            .Where(workShift =>
+                request.ChildIds.Contains(workShift.Id))
+            .ExecuteUpdateAsync(setters =>
+                setters.SetProperty(
+                    workShift =>
+                        EF.Property<Guid?>(
+                            workShift,
+                            "WorkAuthorization_Id"),
+                    request.ParentId));
+    }
+
+    public async Task RemoveFromShiftsAsync(
+        MultipleAssociationRequest request,
+        CancellationToken cancellationToken)
+    {
+        await _db.WorkShifts
+            .Where(workShift =>
+                request.ChildIds.Contains(workShift.Id) &&
+                EF.Property<Guid?>(
+                    workShift,
+                    "WorkAuthorization_Id") == request.ParentId)
+            .ExecuteUpdateAsync(setters =>
+                setters.SetProperty(
+                    workShift =>
+                        EF.Property<Guid?>(
+                            workShift,
+                            "WorkAuthorization_Id"),
+                    (Guid?)null));
+    }
+
+
+    public async Task AddToExceptionsAsync(
+        MultipleAssociationRequest request,
+        CancellationToken cancellationToken)
+    {
+        await _db.ScheduleExceptions
+            .Where(scheduleException =>
+                request.ChildIds.Contains(scheduleException.Id))
+            .ExecuteUpdateAsync(setters =>
+                setters.SetProperty(
+                    scheduleException =>
+                        EF.Property<Guid?>(
+                            scheduleException,
+                            "WorkAuthorization_Id"),
+                    request.ParentId));
+    }
+
+    public async Task RemoveFromExceptionsAsync(
+        MultipleAssociationRequest request,
+        CancellationToken cancellationToken)
+    {
+        await _db.ScheduleExceptions
+            .Where(scheduleException =>
+                request.ChildIds.Contains(scheduleException.Id) &&
+                EF.Property<Guid?>(
+                    scheduleException,
+                    "WorkAuthorization_Id") == request.ParentId)
+            .ExecuteUpdateAsync(setters =>
+                setters.SetProperty(
+                    scheduleException =>
+                        EF.Property<Guid?>(
+                            scheduleException,
+                            "WorkAuthorization_Id"),
+                    (Guid?)null));
+    }
+
 }

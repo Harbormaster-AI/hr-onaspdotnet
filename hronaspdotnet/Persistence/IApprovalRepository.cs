@@ -1,4 +1,5 @@
 using hronaspdotnet.Domain;
+using hronaspdotnet.Contracts;
 
 namespace hronaspdotnet.Persistence;
 
@@ -9,4 +10,6 @@ public interface IApprovalRepository
     Task AddAsync(Approval approval, CancellationToken cancellationToken);
     Task UpdateAsync(Approval approval, CancellationToken cancellationToken);
     Task DeleteAsync(Approval approval, CancellationToken cancellationToken);
+
+
 }

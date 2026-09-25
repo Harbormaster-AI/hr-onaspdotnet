@@ -1,4 +1,5 @@
 using hronaspdotnet.Domain;
+using hronaspdotnet.Contracts;
 
 namespace hronaspdotnet.Persistence;
 
@@ -9,4 +10,6 @@ public interface IBackgroundCheckRepository
     Task AddAsync(BackgroundCheck backgroundCheck, CancellationToken cancellationToken);
     Task UpdateAsync(BackgroundCheck backgroundCheck, CancellationToken cancellationToken);
     Task DeleteAsync(BackgroundCheck backgroundCheck, CancellationToken cancellationToken);
+
+
 }

@@ -1,4 +1,5 @@
 using hronaspdotnet.Domain;
+using hronaspdotnet.Contracts;
 
 namespace hronaspdotnet.Persistence;
 
@@ -9,4 +10,8 @@ public interface IPolicyRepository
     Task AddAsync(Policy policy, CancellationToken cancellationToken);
     Task UpdateAsync(Policy policy, CancellationToken cancellationToken);
     Task DeleteAsync(Policy policy, CancellationToken cancellationToken);
+
+    Task AddToAcknowledgementsAsync( MultipleAssociationRequest request, CancellationToken cancellationToken);
+    Task RemoveFromAcknowledgementsAsync( MultipleAssociationRequest request, CancellationToken cancellationToken);
+
 }

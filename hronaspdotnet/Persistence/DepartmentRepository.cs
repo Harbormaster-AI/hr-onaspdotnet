@@ -1,4 +1,7 @@
+
+using hronaspdotnet.Contracts;
 using hronaspdotnet.Domain;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace hronaspdotnet.Persistence;
@@ -48,4 +51,77 @@ public class DepartmentRepository : IDepartmentRepository
         _db.Departments.Remove(department);
         await _db.SaveChangesAsync(cancellationToken);
     }
+
+
+    public async Task AddToPositionsAsync(
+        MultipleAssociationRequest request,
+        CancellationToken cancellationToken)
+    {
+        await _db.Positions
+            .Where(position =>
+                request.ChildIds.Contains(position.Id))
+            .ExecuteUpdateAsync(setters =>
+                setters.SetProperty(
+                    position =>
+                        EF.Property<Guid?>(
+                            position,
+                            "WorkAuthorization_Id"),
+                    request.ParentId));
+    }
+
+    public async Task RemoveFromPositionsAsync(
+        MultipleAssociationRequest request,
+        CancellationToken cancellationToken)
+    {
+        await _db.Positions
+            .Where(position =>
+                request.ChildIds.Contains(position.Id) &&
+                EF.Property<Guid?>(
+                    position,
+                    "WorkAuthorization_Id") == request.ParentId)
+            .ExecuteUpdateAsync(setters =>
+                setters.SetProperty(
+                    position =>
+                        EF.Property<Guid?>(
+                            position,
+                            "WorkAuthorization_Id"),
+                    (Guid?)null));
+    }
+
+
+    public async Task AddToEmployeesAsync(
+        MultipleAssociationRequest request,
+        CancellationToken cancellationToken)
+    {
+        await _db.Employees
+            .Where(employee =>
+                request.ChildIds.Contains(employee.Id))
+            .ExecuteUpdateAsync(setters =>
+                setters.SetProperty(
+                    employee =>
+                        EF.Property<Guid?>(
+                            employee,
+                            "WorkAuthorization_Id"),
+                    request.ParentId));
+    }
+
+    public async Task RemoveFromEmployeesAsync(
+        MultipleAssociationRequest request,
+        CancellationToken cancellationToken)
+    {
+        await _db.Employees
+            .Where(employee =>
+                request.ChildIds.Contains(employee.Id) &&
+                EF.Property<Guid?>(
+                    employee,
+                    "WorkAuthorization_Id") == request.ParentId)
+            .ExecuteUpdateAsync(setters =>
+                setters.SetProperty(
+                    employee =>
+                        EF.Property<Guid?>(
+                            employee,
+                            "WorkAuthorization_Id"),
+                    (Guid?)null));
+    }
+
 }

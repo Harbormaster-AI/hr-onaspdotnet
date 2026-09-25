@@ -1,4 +1,5 @@
 using hronaspdotnet.Domain;
+using hronaspdotnet.Contracts;
 
 namespace hronaspdotnet.Persistence;
 
@@ -9,4 +10,6 @@ public interface IDocumentRepository
     Task AddAsync(Document document, CancellationToken cancellationToken);
     Task UpdateAsync(Document document, CancellationToken cancellationToken);
     Task DeleteAsync(Document document, CancellationToken cancellationToken);
+
+
 }

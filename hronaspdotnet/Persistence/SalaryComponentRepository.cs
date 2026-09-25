@@ -1,4 +1,7 @@
+
+using hronaspdotnet.Contracts;
 using hronaspdotnet.Domain;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace hronaspdotnet.Persistence;
@@ -44,4 +47,5 @@ public class SalaryComponentRepository : ISalaryComponentRepository
         _db.SalaryComponents.Remove(salaryComponent);
         await _db.SaveChangesAsync(cancellationToken);
     }
+
 }

@@ -1,4 +1,5 @@
 using hronaspdotnet.Domain;
+using hronaspdotnet.Contracts;
 
 namespace hronaspdotnet.Persistence;
 
@@ -9,4 +10,8 @@ public interface ILeaveRequestRepository
     Task AddAsync(LeaveRequest leaveRequest, CancellationToken cancellationToken);
     Task UpdateAsync(LeaveRequest leaveRequest, CancellationToken cancellationToken);
     Task DeleteAsync(LeaveRequest leaveRequest, CancellationToken cancellationToken);
+
+    Task AddToApprovalsAsync( MultipleAssociationRequest request, CancellationToken cancellationToken);
+    Task RemoveFromApprovalsAsync( MultipleAssociationRequest request, CancellationToken cancellationToken);
+
 }

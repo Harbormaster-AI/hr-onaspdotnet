@@ -1,4 +1,7 @@
+
+using hronaspdotnet.Contracts;
 using hronaspdotnet.Domain;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace hronaspdotnet.Persistence;
@@ -46,4 +49,5 @@ public class PayrollItemRepository : IPayrollItemRepository
         _db.PayrollItems.Remove(payrollItem);
         await _db.SaveChangesAsync(cancellationToken);
     }
+
 }

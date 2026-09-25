@@ -1,4 +1,7 @@
+
+using hronaspdotnet.Contracts;
 using hronaspdotnet.Domain;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace hronaspdotnet.Persistence;
@@ -44,4 +47,41 @@ public class PayrollRunRepository : IPayrollRunRepository
         _db.PayrollRuns.Remove(payrollRun);
         await _db.SaveChangesAsync(cancellationToken);
     }
+
+
+    public async Task AddToPayrollItemsAsync(
+        MultipleAssociationRequest request,
+        CancellationToken cancellationToken)
+    {
+        await _db.PayrollItems
+            .Where(payrollItem =>
+                request.ChildIds.Contains(payrollItem.Id))
+            .ExecuteUpdateAsync(setters =>
+                setters.SetProperty(
+                    payrollItem =>
+                        EF.Property<Guid?>(
+                            payrollItem,
+                            "WorkAuthorization_Id"),
+                    request.ParentId));
+    }
+
+    public async Task RemoveFromPayrollItemsAsync(
+        MultipleAssociationRequest request,
+        CancellationToken cancellationToken)
+    {
+        await _db.PayrollItems
+            .Where(payrollItem =>
+                request.ChildIds.Contains(payrollItem.Id) &&
+                EF.Property<Guid?>(
+                    payrollItem,
+                    "WorkAuthorization_Id") == request.ParentId)
+            .ExecuteUpdateAsync(setters =>
+                setters.SetProperty(
+                    payrollItem =>
+                        EF.Property<Guid?>(
+                            payrollItem,
+                            "WorkAuthorization_Id"),
+                    (Guid?)null));
+    }
+
 }

@@ -1,4 +1,5 @@
 using hronaspdotnet.Domain;
+using hronaspdotnet.Contracts;
 
 namespace hronaspdotnet.Persistence;
 
@@ -9,4 +10,6 @@ public interface IOfferRepository
     Task AddAsync(Offer offer, CancellationToken cancellationToken);
     Task UpdateAsync(Offer offer, CancellationToken cancellationToken);
     Task DeleteAsync(Offer offer, CancellationToken cancellationToken);
+
+
 }

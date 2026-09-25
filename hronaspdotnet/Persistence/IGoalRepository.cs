@@ -1,4 +1,5 @@
 using hronaspdotnet.Domain;
+using hronaspdotnet.Contracts;
 
 namespace hronaspdotnet.Persistence;
 
@@ -9,4 +10,8 @@ public interface IGoalRepository
     Task AddAsync(Goal goal, CancellationToken cancellationToken);
     Task UpdateAsync(Goal goal, CancellationToken cancellationToken);
     Task DeleteAsync(Goal goal, CancellationToken cancellationToken);
+
+    Task AddToChildGoalsAsync( MultipleAssociationRequest request, CancellationToken cancellationToken);
+    Task RemoveFromChildGoalsAsync( MultipleAssociationRequest request, CancellationToken cancellationToken);
+
 }

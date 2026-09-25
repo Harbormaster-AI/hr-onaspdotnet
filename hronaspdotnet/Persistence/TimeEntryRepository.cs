@@ -1,4 +1,7 @@
+
+using hronaspdotnet.Contracts;
 using hronaspdotnet.Domain;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace hronaspdotnet.Persistence;
@@ -48,4 +51,5 @@ public class TimeEntryRepository : ITimeEntryRepository
         _db.TimeEntrys.Remove(timeEntry);
         await _db.SaveChangesAsync(cancellationToken);
     }
+
 }

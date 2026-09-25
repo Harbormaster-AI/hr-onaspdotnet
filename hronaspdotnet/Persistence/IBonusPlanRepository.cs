@@ -1,4 +1,5 @@
 using hronaspdotnet.Domain;
+using hronaspdotnet.Contracts;
 
 namespace hronaspdotnet.Persistence;
 
@@ -9,4 +10,8 @@ public interface IBonusPlanRepository
     Task AddAsync(BonusPlan bonusPlan, CancellationToken cancellationToken);
     Task UpdateAsync(BonusPlan bonusPlan, CancellationToken cancellationToken);
     Task DeleteAsync(BonusPlan bonusPlan, CancellationToken cancellationToken);
+
+    Task AddToCompensationPackagesAsync( MultipleAssociationRequest request, CancellationToken cancellationToken);
+    Task RemoveFromCompensationPackagesAsync( MultipleAssociationRequest request, CancellationToken cancellationToken);
+
 }

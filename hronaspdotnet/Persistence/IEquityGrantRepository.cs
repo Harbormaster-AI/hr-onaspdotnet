@@ -1,4 +1,5 @@
 using hronaspdotnet.Domain;
+using hronaspdotnet.Contracts;
 
 namespace hronaspdotnet.Persistence;
 
@@ -9,4 +10,6 @@ public interface IEquityGrantRepository
     Task AddAsync(EquityGrant equityGrant, CancellationToken cancellationToken);
     Task UpdateAsync(EquityGrant equityGrant, CancellationToken cancellationToken);
     Task DeleteAsync(EquityGrant equityGrant, CancellationToken cancellationToken);
+
+
 }

@@ -1,4 +1,7 @@
+
+using hronaspdotnet.Contracts;
 using hronaspdotnet.Domain;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace hronaspdotnet.Persistence;
@@ -42,4 +45,77 @@ public class CompetencyRepository : ICompetencyRepository
         _db.Competencys.Remove(competency);
         await _db.SaveChangesAsync(cancellationToken);
     }
+
+
+    public async Task AddToJobProfilesAsync(
+        MultipleAssociationRequest request,
+        CancellationToken cancellationToken)
+    {
+        await _db.JobProfiles
+            .Where(jobProfile =>
+                request.ChildIds.Contains(jobProfile.Id))
+            .ExecuteUpdateAsync(setters =>
+                setters.SetProperty(
+                    jobProfile =>
+                        EF.Property<Guid?>(
+                            jobProfile,
+                            "WorkAuthorization_Id"),
+                    request.ParentId));
+    }
+
+    public async Task RemoveFromJobProfilesAsync(
+        MultipleAssociationRequest request,
+        CancellationToken cancellationToken)
+    {
+        await _db.JobProfiles
+            .Where(jobProfile =>
+                request.ChildIds.Contains(jobProfile.Id) &&
+                EF.Property<Guid?>(
+                    jobProfile,
+                    "WorkAuthorization_Id") == request.ParentId)
+            .ExecuteUpdateAsync(setters =>
+                setters.SetProperty(
+                    jobProfile =>
+                        EF.Property<Guid?>(
+                            jobProfile,
+                            "WorkAuthorization_Id"),
+                    (Guid?)null));
+    }
+
+
+    public async Task AddToCompetencyRatingsAsync(
+        MultipleAssociationRequest request,
+        CancellationToken cancellationToken)
+    {
+        await _db.CompetencyRatings
+            .Where(competencyRating =>
+                request.ChildIds.Contains(competencyRating.Id))
+            .ExecuteUpdateAsync(setters =>
+                setters.SetProperty(
+                    competencyRating =>
+                        EF.Property<Guid?>(
+                            competencyRating,
+                            "WorkAuthorization_Id"),
+                    request.ParentId));
+    }
+
+    public async Task RemoveFromCompetencyRatingsAsync(
+        MultipleAssociationRequest request,
+        CancellationToken cancellationToken)
+    {
+        await _db.CompetencyRatings
+            .Where(competencyRating =>
+                request.ChildIds.Contains(competencyRating.Id) &&
+                EF.Property<Guid?>(
+                    competencyRating,
+                    "WorkAuthorization_Id") == request.ParentId)
+            .ExecuteUpdateAsync(setters =>
+                setters.SetProperty(
+                    competencyRating =>
+                        EF.Property<Guid?>(
+                            competencyRating,
+                            "WorkAuthorization_Id"),
+                    (Guid?)null));
+    }
+
 }
